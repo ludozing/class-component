@@ -1,6 +1,7 @@
 import Hello from './components/Hello';
 import Counter from './components/Counter';
 import Customer from './components/Customer';
+import {Table, TableBody, TableCell, TableHead, TableRow} from '@material-ui/core';
 import './App.css';
 
 function App() {
@@ -36,15 +37,34 @@ function App() {
       <hr/>
       <Counter />
       <hr/>
-      <Customer image="https://placeimg.com/64/64/any" name="강하늘" id="skykang" birthday="20160106" gender="남" job="개발자" />
-      <ht/>
-      {
-        customers.map (customer => {
-          return (
-              <Customer image="https://placeimg.com/64/64/any" key={customer.id} name={customer.name} birthday={customer.birthday} gender={customer.gender} job={customer.job} />
-            )
-        })
-      }
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>사진</TableCell>
+            <TableCell>이름</TableCell>
+            <TableCell>생일</TableCell>
+            <TableCell>성별</TableCell>
+            <TableCell>직업</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        <Customer image="https://placeimg.com/64/64/any" name="강하늘" birthday="20160106" gender="남" job="개발자" />
+          {
+            customers.map (customer => {
+              return (
+                <Customer
+                  image="https://placeimg.com/64/64/any"
+                  key={customer.id}
+                  name={customer.name}
+                  birthday={customer.birthday}
+                  gender={customer.gender}
+                  job={customer.job}
+                />
+              )
+            })
+          }
+        </TableBody>
+      </Table>
     </div>
   );
 }
